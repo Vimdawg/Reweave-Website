@@ -7,7 +7,9 @@
 </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Add Supabase CDN -->
+    <!-- Supabase configuration (client-side anon key is safe to expose) -->
+    <meta name="supabase-url" content="https://ezhzsfxrhjcidchzcbcv.supabase.co">
+    <meta name="supabase-anon-key" content="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6aHpzZnhyaGpjaWRjaHpjYmN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NzU5MzAsImV4cCI6MjA3MTM1MTkzMH0.ibwGKXom6cDHkjWitGKqutoVmJeZWnwIfe-aO6aOiCw">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,6 +57,8 @@
             
             <!-- Auth Section -->
             <div class="flex items-center space-x-4">
+                <!-- Remove the entire cart button section -->
+                
                 <!-- Desktop Auth Buttons -->
                 <div class="hidden md:flex items-center space-x-3">
                     <button id="login-btn" class="text-navy hover:text-batik-gold transition-colors duration-300 text-sm font-medium tracking-wider">
@@ -82,16 +86,7 @@
             <a href="#journey" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Journey</a>
             <a href="#team" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Team</a>
             <a href="#contact" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Get Involved</a>
-            
-            <!-- Mobile Auth Section -->
-            <div class="border-t border-navy/10 p-4 space-y-3">
-                <button id="mobile-login-btn" class="w-full text-center py-2 text-navy hover:bg-batik-cream/30 rounded-lg text-sm font-medium">
-                    Login
-                </button>
-                <button id="mobile-signup-btn" class="w-full bg-navy hover:bg-navy-dark text-white py-2 rounded-lg text-sm font-medium">
-                    Sign Up
-                </button>
-            </div>
+            <!-- Remove the mobile cart button -->
         </div>
     </header>
 

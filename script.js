@@ -599,11 +599,22 @@ window.ReweaveApp = {
 // Authentication System
 class AuthSystem {
     constructor() {
-        // Initialize Supabase client
-        this.supabase = supabase.createClient(
-            'https://ezhzsfxrhjcidchzcbcv.supabase.co',
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6aHpzZnhyaGpjaWRjaHpjYmN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NzU5MzAsImV4cCI6MjA3MTM1MTkzMH0.ibwGKXom6cDHkjWitGKqutoVmJeZWnwIfe-aO6aOiCw'
-        );
+        // Initialize Supabase client from meta tags
+        const url = document.querySelector('meta[name="supabase-url"]')?.content;
+        const anonKey = document.querySelector('meta[name="supabase-anon-key"]')?.content;
+
+        if (!url || !anonKey) {
+            console.error('Supabase configuration missing: set meta[name="supabase-url"] and meta[name="supabase-anon-key"] in index.html');
+            this.supabase = null;
+        } else {
+            this.supabase = supabase.createClient(url, anonKey);
+            // Keep UI in sync with auth changes (across tabs/windows too)
+            this.supabase.auth.onAuthStateChange((_event, session) => {
+                this.currentUser = session?.user || null;
+                this.updateUI();
+            });
+        }
+
         this.currentUser = null;
         this.init();
     }
@@ -680,6 +691,12 @@ class AuthSystem {
 
     async handleSignup(e) {
         e.preventDefault();
+
+        if (!this.supabase) {
+            this.showError('signup-form-error', 'Authentication is not configured. Please try again later.');
+            return;
+        }
+
         this.setLoadingState('signup-form', true);
 
         const formData = new FormData(e.target);
@@ -730,6 +747,11 @@ class AuthSystem {
     async handleLogin(e) {
         e.preventDefault();
         this.clearFormErrors();
+
+        if (!this.supabase) {
+            this.showError('login-form-error', 'Authentication is not configured. Please try again later.');
+            return;
+        }
         this.setLoadingState('login-form', true);
 
         const formData = new FormData(e.target);
@@ -776,10 +798,14 @@ class AuthSystem {
     }
 
     async logout() {
+        if (!this.supabase) {
+            console.warn('Supabase not configured; cannot logout.');
+            return;
+        }
         try {
             const { error } = await this.supabase.auth.signOut();
             if (error) throw error;
-            
+
             this.currentUser = null;
             this.updateUI();
             this.showSuccessMessage('You have been successfully logged out.');
@@ -789,7 +815,12 @@ class AuthSystem {
     }
 
     async checkLoginStatus() {
+        if (!this.supabase) {
+            console.warn('Supabase not configured; skipping login status check.');
+            return;
+        }
         try {
+            if (!this.supabase) return;
             const { data: { user } } = await this.supabase.auth.getUser();
             this.currentUser = user;
             this.updateUI();
@@ -909,11 +940,28 @@ class AuthSystem {
 
     updateUI() {
         const authSection = document.querySelector('.flex.items-center.space-x-4');
+        if (!authSection) return;
         
         if (this.currentUser) {
+            // Compute a friendly display name
+            const meta = this.currentUser.user_metadata || {};
+            let displayName =
+                (meta.full_name || meta.name || meta.first_name || '').toString().trim();
+
+            if (displayName) {
+                // Use only the first word as "first name"
+                displayName = displayName.split(/\s+/)[0];
+            } else if (this.currentUser.email) {
+                // Fallback to email username if no name in metadata
+                displayName = this.currentUser.email.split('@')[0];
+            } else {
+                // Final fallback
+                displayName = 'there';
+            }
+
             authSection.innerHTML = `
                 <div class="hidden md:flex items-center space-x-3 user-menu">
-                    <span class="text-navy text-sm">Welcome, ${this.currentUser.name}</span>
+                    <span class="text-navy text-sm">Welcome, ${displayName}</span>
                     <div class="relative">
                         <button id="user-menu-btn" class="bg-navy hover:bg-navy-dark text-white px-4 py-2 rounded-lg text-sm font-medium tracking-wider transition-colors duration-300">
                             Account
@@ -950,11 +998,10 @@ class AuthSystem {
                     </svg>
                 </button>
             `;
-            
-            // Add specific event listeners for the newly created buttons
+
+            // Re-attach click handlers to the newly inserted buttons
             document.getElementById('login-btn')?.addEventListener('click', () => this.openLoginModal());
             document.getElementById('signup-btn')?.addEventListener('click', () => this.openSignupModal());
-            // Remove this line: this.bindEvents();
         }
     }
 
