@@ -48,6 +48,7 @@
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wider">
                 <a href="#story" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">The Story</a>
+                <a href="#product" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">Product</a>
                 <a href="#impact" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">Impact</a>
                 <a href="#proof" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">Proof</a>
                 <a href="#journey" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">Journey</a>
@@ -81,6 +82,7 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-navy/10">
             <a href="#story" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">The Story</a>
+            <a href="#product" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Product</a>
             <a href="#impact" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Impact</a>
             <a href="#proof" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Proof</a>
             <a href="#journey" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Journey</a>
@@ -123,7 +125,7 @@
                 <div class="mt-16 grid md:grid-cols-2 gap-12 items-center">
                     <div class="batik-card group">
                         <div class="batik-card-ornament"></div>
-                        <h3 class="text-2xl font-display font-semibold mb-4 text-batik-gold">The Problem</h3>
+                        <h3 class="text-2xl font-display font-semibold mb-4 text-navy">The Problem</h3>
                         <p class="text-gray-700 leading-relaxed mb-6">
                             In Malaysia, poverty isn’t just too little money, it’s too few chances: over 161,000 single mothers, most earning under RM2,000 a month, face 70% with no savings and 45% without childcare that limits work, while joblessness drives a 17% recidivism rate, closing the door for women to rebuild and for children to learn and play.
                         </p>
@@ -151,6 +153,59 @@
             </div>
         </section>
 
+        <!-- Product Section -->
+        <section id="product" class="py-16 md:py-24 relative" style="background-image: url('images/product/batik-background1.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+            <div class="container mx-auto px-6 relative z-10">
+                <!-- Heading -->
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <div class="batik-ornament-small mx-auto mb-4"></div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-white">Product</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-start">
+                    <!-- Product Images: both shown in full (no cropping) -->
+                    <div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="batik-card p-2">
+                                <div class="batik-card-ornament"></div>
+                                <img
+                                    src="images/product/featured-bag.jpg"
+                                    alt="Reweave Paddle Case with batik accent - Image 1"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="batik-card p-2">
+                                <div class="batik-card-ornament"></div>
+                                <img
+                                    src="images/product/features-bag2.jpg"
+                                    alt="Reweave Paddle Case with batik accent - Image 2"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Details -->
+                    <div>
+                        <div class="batik-ornament-small mb-4"></div>
+                        <h3 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+                            Reweave Paddle Case
+                        </h3>
+                        <p class="text-white/90 leading-relaxed mb-6">
+                            Hand-crafted from recycled denim and finished with beautiful batik accents — a durable, purpose-driven case to carry your paddle and essentials.
+                        </p>
+
+                        <div class="flex items-center gap-4">
+                            <button id="add-to-cart-btn" class="batik-button">
+                                <span class="batik-button-ornament"></span>
+                                Add to cart
+                            </button>
+                            <span class="text-sm text-white/80">Cart feature coming soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- Impact Section -->
         <section id="impact" class="py-20 md:py-32 bg-gradient-to-br from-batik-cream/30 to-white relative">
             <div class="batik-section-bg-alt absolute inset-0 opacity-5"></div>
