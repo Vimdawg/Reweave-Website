@@ -1,0 +1,979 @@
+// Reweave - Interactive JavaScript with Batik-themed Enhancements
+// Navy Blue & White Color Scheme with Indonesian Batik Elements
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize all components
+    initializeNavigation();
+    initializeImpactCalculator();
+    initializeCharts();
+    initializeScrollAnimations();
+    initializeIntersectionObserver();
+    initializeGeminiAPI();
+    initializeBatikAnimations();
+});
+
+// Navigation functionality
+function initializeNavigation() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            
+            // Animate menu button
+            mobileMenuButton.style.transform = mobileMenu.classList.contains('hidden') 
+                ? 'rotate(0deg)' 
+                : 'rotate(90deg)';
+        });
+    }
+    
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Close mobile menu if open
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.style.transform = 'rotate(0deg)';
+                }
+            }
+        });
+    });
+}
+
+// Impact calculator functionality
+function initializeImpactCalculator() {
+    const impactSlider = document.getElementById('cases-slider');
+    const casesSoldValue = document.getElementById('cases-sold-value');
+    const jeansUpcycled = document.getElementById('jeans-upcycled');
+    const waterSaved = document.getElementById('water-saved');
+    const paidToArtisans = document.getElementById('paid-to-artisans');
+
+    if (impactSlider) {
+        impactSlider.addEventListener('input', (event) => {
+            const cases = parseInt(event.target.value);
+            updateImpactMetrics(cases, casesSoldValue, jeansUpcycled, waterSaved, paidToArtisans);
+            
+            // Add batik animation effect
+            animateMetricCards();
+        });
+    }
+}
+
+function updateImpactMetrics(cases, casesSoldValue, jeansUpcycled, waterSaved, paidToArtisans) {
+    if (casesSoldValue) casesSoldValue.textContent = cases;
+    if (jeansUpcycled) jeansUpcycled.textContent = cases;
+    if (waterSaved) waterSaved.textContent = (cases * 1200).toLocaleString();
+    if (paidToArtisans) paidToArtisans.textContent = (cases * 25).toLocaleString();
+}
+
+function animateMetricCards() {
+    const metricCards = document.querySelectorAll('.batik-metric-card');
+    metricCards.forEach((card, index) => {
+        setTimeout(() => {
+            card.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                card.style.transform = 'scale(1)';
+            }, 200);
+        }, index * 100);
+    });
+}
+
+// Chart initialization with batik-themed colors
+function initializeCharts() {
+    initializeCostChart();
+    initializeRevenueChart();
+}
+
+function initializeCostChart() {
+    const costCtx = document.getElementById('costChart');
+    if (!costCtx) return;
+    
+    new Chart(costCtx.getContext('2d'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Artisan Pay', 'Materials', 'Profit & Reinvestment'],
+            datasets: [{
+                data: [40, 10, 50],
+                backgroundColor: ['#1e3a8a', '#fbbf24', '#3b82f6'], // Navy, Batik Gold, Navy Light
+                borderColor: '#ffffff',
+                borderWidth: 4,
+                hoverBackgroundColor: ['#1e40af', '#f59e0b', '#2563eb'],
+                hoverBorderWidth: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: {
+                            family: 'Inter',
+                            size: 12,
+                            weight: '500'
+                        },
+                        color: '#1e3a8a',
+                        padding: 20,
+                        usePointStyle: true,
+                        pointStyle: 'circle'
+                    }
+                },
+                tooltip: {
+                    backgroundColor: '#1e3a8a',
+                    titleColor: '#fef3c7',
+                    bodyColor: '#ffffff',
+                    borderColor: '#fbbf24',
+                    borderWidth: 2,
+                    cornerRadius: 8,
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.label}: ${context.raw}%`;
+                        }
+                    }
+                }
+            },
+            animation: {
+                animateRotate: true,
+                duration: 2000,
+                easing: 'easeInOutQuart'
+            }
+        }
+    });
+}
+
+function initializeRevenueChart() {
+    const revenueCtx = document.getElementById('revenueChart');
+    if (!revenueCtx) return;
+    
+    new Chart(revenueCtx.getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['Direct Sales', '    Partnerships', 'Extensions'],
+            datasets: [{
+                label: 'Projected Revenue Share',
+                data: [65, 25, 10],
+                backgroundColor: ['#1e3a8a', '#fbbf24', '#3b82f6'], // Navy, Batik Gold, Navy Light
+                borderColor: ['#1e40af', '#f59e0b', '#2563eb'],
+                borderWidth: 2,
+                borderRadius: 8,
+                hoverBackgroundColor: ['#1e40af', '#f59e0b', '#2563eb']
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: '#1e3a8a',
+                    titleColor: '#fef3c7',
+                    bodyColor: '#ffffff',
+                    borderColor: '#fbbf24',
+                    borderWidth: 2,
+                    cornerRadius: 8,
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.raw}%`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    grid: {
+                        color: '#fef3c7',
+                        lineWidth: 1
+                    },
+                    ticks: {
+                        color: '#1e3a8a',
+                        font: {
+                            family: 'Inter',
+                            size: 11,
+                            weight: '500'
+                        },
+                        callback: function(value) {
+                            return value + '%';
+                        }
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        color: '#1e3a8a',
+                        font: {
+                            family: 'Inter',
+                            size: 12,
+                            weight: '600'
+                        }
+                    }
+                }
+            },
+            animation: {
+                duration: 2000,
+                easing: 'easeInOutQuart'
+            }
+        }
+    });
+}
+
+// Scroll animations
+function initializeScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.batik-card, .batik-metric-card, .batik-timeline-item');
+    
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('batik-fade-in');
+                
+                // Add staggered animation for multiple elements
+                const siblings = Array.from(entry.target.parentNode.children);
+                const index = siblings.indexOf(entry.target);
+                entry.target.style.animationDelay = `${index * 0.1}s`;
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    animatedElements.forEach(el => {
+        scrollObserver.observe(el);
+    });
+}
+
+// Intersection observer for navigation and timeline
+function initializeIntersectionObserver() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const timelineItems = document.querySelectorAll('.batik-timeline-item');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -20% 0px',
+        threshold: 0.3
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                
+                // Update navigation
+                navLinks.forEach(link => {
+                    link.classList.remove('active-nav');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active-nav');
+                    }
+                });
+
+                // Update timeline if in journey section
+                if (id === 'journey') {
+                    animateTimelineItems();
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+}
+
+function animateTimelineItems() {
+    const timelineItems = document.querySelectorAll('.batik-timeline-item');
+    timelineItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add('batik-slide-in');
+        }, index * 300);
+    });
+}
+
+// Gemini API Integration
+function initializeGeminiAPI() {
+    const generateDenimStoryBtn = document.getElementById('generate-denim-story');
+    const denimStoryOutput = document.getElementById('denim-story-output');
+    const denimStoryLoading = document.getElementById('denim-story-loading');
+
+    const generateImpactSummaryBtn = document.getElementById('generate-impact-summary');
+    const impactSummaryOutput = document.getElementById('impact-summary-output');
+    const impactSummaryLoading = document.getElementById('impact-summary-loading');
+
+    if (generateDenimStoryBtn) {
+        generateDenimStoryBtn.addEventListener('click', () => {
+            const prompt = "Write a very short (2-3 sentences), imaginative, and inspiring story about a pair of denim jeans' journey before it was upcycled into a unique pickleball paddle case by artisans. Focus on its past life and transformation. Make it sound hopeful and unique.";
+            callGeminiAPI(prompt, denimStoryOutput, denimStoryLoading);
+        });
+    }
+
+    if (generateImpactSummaryBtn) {
+        generateImpactSummaryBtn.addEventListener('click', () => {
+            const casesSoldValue = document.getElementById('cases-sold-value');
+            const jeansUpcycled = document.getElementById('jeans-upcycled');
+            const waterSaved = document.getElementById('water-saved');
+            const paidToArtisans = document.getElementById('paid-to-artisans');
+            
+            if (casesSoldValue && jeansUpcycled && waterSaved && paidToArtisans) {
+                const cases = parseInt(casesSoldValue.textContent);
+                const jeans = parseInt(jeansUpcycled.textContent);
+                const water = parseInt(waterSaved.textContent.replace(/,/g, ''));
+                const paid = parseInt(paidToArtisans.textContent.replace(/,/g, ''));
+
+                const prompt = `Given that ${cases} Reweave pickleball cases have been sold, which means ${jeans} jeans were upcycled, ${water} liters of water were saved, and RM${paid} was paid to artisans, write a concise, inspiring statement (1-2 sentences) summarizing this combined social and environmental impact.`;
+                callGeminiAPI(prompt, impactSummaryOutput, impactSummaryLoading);
+            }
+        });
+    }
+}
+
+async function callGeminiAPI(prompt, outputElement, loadingElement) {
+    if (!outputElement || !loadingElement) return;
+    
+    outputElement.textContent = '';
+    loadingElement.classList.remove('hidden');
+    loadingElement.classList.add('loading-pulse');
+
+    let chatHistory = [];
+    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+    const payload = { contents: chatHistory };
+    const apiKey = ""; // API key can be added here if needed
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+    let retryCount = 0;
+    const maxRetries = 5;
+    let delay = 1000;
+
+    while (retryCount < maxRetries) {
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                if (response.status === 429) {
+                    retryCount++;
+                    await new Promise(res => setTimeout(res, delay));
+                    delay *= 2;
+                    continue;
+                } else {
+                    throw new Error(`API error: ${response.statusText}`);
+                }
+            }
+
+            const result = await response.json();
+            if (result.candidates && result.candidates.length > 0 &&
+                result.candidates[0].content && result.candidates[0].content.parts &&
+                result.candidates[0].content.parts.length > 0) {
+                const text = result.candidates[0].content.parts[0].text;
+                
+                // Animate text appearance
+                outputElement.style.opacity = '0';
+                outputElement.textContent = text;
+                
+                setTimeout(() => {
+                    outputElement.style.transition = 'opacity 0.5s ease';
+                    outputElement.style.opacity = '1';
+                }, 100);
+            } else {
+                outputElement.textContent = "Could not generate content. Please try again.";
+            }
+            break;
+        } catch (error) {
+            outputElement.textContent = `Error: ${error.message}`;
+            break;
+        } finally {
+            loadingElement.classList.add('hidden');
+            loadingElement.classList.remove('loading-pulse');
+        }
+    }
+
+    if (retryCount === maxRetries) {
+        outputElement.textContent = "Failed to generate content after multiple retries. Please try again later.";
+        loadingElement.classList.add('hidden');
+        loadingElement.classList.remove('loading-pulse');
+    }
+}
+
+// Batik-themed animations and interactions
+function initializeBatikAnimations() {
+    // Add hover effects to cards
+    const cards = document.querySelectorAll('.batik-card, .batik-metric-card, .batik-testimonial-card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+    
+    // Add click ripple effect to buttons
+    const buttons = document.querySelectorAll('.batik-button, .batik-button-white');
+    buttons.forEach(button => {
+        button.addEventListener('click', createRippleEffect);
+    });
+    
+    // Initialize parallax scrolling for hero section
+    initializeParallaxScrolling();
+    
+    // Add floating animation to ornaments
+    initializeFloatingOrnaments();
+}
+
+function createRippleEffect(e) {
+    const button = e.currentTarget;
+    const ripple = document.createElement('span');
+    const rect = button.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+    
+    ripple.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        left: ${x}px;
+        top: ${y}px;
+        background: rgba(251, 191, 36, 0.3);
+        border-radius: 50%;
+        transform: scale(0);
+        animation: ripple 0.6s ease-out;
+        pointer-events: none;
+    `;
+    
+    button.style.position = 'relative';
+    button.style.overflow = 'hidden';
+    button.appendChild(ripple);
+    
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
+}
+
+function initializeParallaxScrolling() {
+    const hero = document.getElementById('hero');
+    if (!hero) return;
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        
+        const heroPattern = hero.querySelector('.batik-hero-pattern');
+        if (heroPattern) {
+            heroPattern.style.transform = `translateY(${rate}px)`;
+        }
+    });
+}
+
+function initializeFloatingOrnaments() {
+    const ornaments = document.querySelectorAll('.batik-ornament, .batik-ornament-small');
+    
+    ornaments.forEach((ornament, index) => {
+        const delay = index * 0.5;
+        const duration = 3 + (index % 3);
+        
+        ornament.style.animation = `float ${duration}s ease-in-out ${delay}s infinite alternate`;
+    });
+}
+
+// Add CSS for animations that need to be defined in JavaScript
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes float {
+        from {
+            transform: translateY(0px);
+        }
+        to {
+            transform: translateY(-10px);
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Utility functions
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
+// Performance optimization for scroll events
+window.addEventListener('scroll', throttle(() => {
+    // Handle scroll-based animations here if needed
+}, 16)); // ~60fps
+
+// Error handling for missing elements
+function safeQuerySelector(selector) {
+    const element = document.querySelector(selector);
+    if (!element) {
+        console.warn(`Element not found: ${selector}`);
+    }
+    return element;
+}
+
+// Initialize accessibility features
+function initializeAccessibility() {
+    // Add keyboard navigation support
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            document.body.classList.add('keyboard-navigation');
+        }
+    });
+    
+    document.addEventListener('mousedown', () => {
+        document.body.classList.remove('keyboard-navigation');
+    });
+    
+    // Add focus indicators for keyboard users
+    const focusableElements = document.querySelectorAll('button, a, input, [tabindex]');
+    focusableElements.forEach(element => {
+        element.addEventListener('focus', () => {
+            if (document.body.classList.contains('keyboard-navigation')) {
+                element.style.outline = '2px solid #fbbf24';
+                element.style.outlineOffset = '2px';
+            }
+        });
+        
+        element.addEventListener('blur', () => {
+            element.style.outline = '';
+            element.style.outlineOffset = '';
+        });
+    });
+}
+
+// Initialize accessibility on load
+initializeAccessibility();
+
+// Export functions for potential external use
+window.ReweaveApp = {
+    updateImpactMetrics,
+    animateMetricCards,
+    createRippleEffect,
+    callGeminiAPI
+};
+
+// Authentication System
+class AuthSystem {
+    constructor() {
+        // Initialize Supabase client
+        this.supabase = supabase.createClient(
+            'https://ezhzsfxrhjcidchzcbcv.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6aHpzZnhyaGpjaWRjaHpjYmN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NzU5MzAsImV4cCI6MjA3MTM1MTkzMH0.ibwGKXom6cDHkjWitGKqutoVmJeZWnwIfe-aO6aOiCw'
+        );
+        this.currentUser = null;
+        this.init();
+    }
+
+    init() {
+        this.checkLoginStatus();
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        // Modal triggers
+        document.getElementById('login-btn')?.addEventListener('click', () => this.openLoginModal());
+        document.getElementById('signup-btn')?.addEventListener('click', () => this.openSignupModal());
+        document.getElementById('mobile-login-btn')?.addEventListener('click', () => this.openLoginModal());
+        document.getElementById('mobile-signup-btn')?.addEventListener('click', () => this.openSignupModal());
+
+        // Modal close buttons
+        document.getElementById('close-login-modal')?.addEventListener('click', () => this.closeModal('login-modal'));
+        document.getElementById('close-signup-modal')?.addEventListener('click', () => this.closeModal('signup-modal'));
+
+        // Switch between modals
+        document.getElementById('switch-to-signup')?.addEventListener('click', () => this.switchToSignup());
+        document.getElementById('switch-to-login')?.addEventListener('click', () => this.switchToLogin());
+
+        // Form submissions
+        document.getElementById('login-form')?.addEventListener('submit', (e) => this.handleLogin(e));
+        document.getElementById('signup-form')?.addEventListener('submit', (e) => this.handleSignup(e));
+
+        // Close modal when clicking outside
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) {
+                this.closeModal(e.target.id);
+            }
+        });
+
+        // ESC key to close modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeAllModals();
+            }
+        });
+    }
+
+    openLoginModal() {
+        document.getElementById('login-modal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    openSignupModal() {
+        document.getElementById('signup-modal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    closeModal(modalId) {
+        document.getElementById(modalId).classList.add('hidden');
+        document.body.style.overflow = 'auto';
+        this.clearFormErrors();
+    }
+
+    closeAllModals() {
+        this.closeModal('login-modal');
+        this.closeModal('signup-modal');
+    }
+
+    switchToSignup() {
+        this.closeModal('login-modal');
+        this.openSignupModal();
+    }
+
+    switchToLogin() {
+        this.closeModal('signup-modal');
+        this.openLoginModal();
+    }
+
+    async handleSignup(e) {
+        e.preventDefault();
+        this.setLoadingState('signup-form', true);
+
+        const formData = new FormData(e.target);
+        const name = formData.get('name').trim();
+        const email = formData.get('email').trim();
+        const password = formData.get('password');
+        const confirmPassword = formData.get('confirmPassword');
+        const termsAccepted = document.getElementById('terms-checkbox').checked;
+
+        const validation = this.validateSignupForm(name, email, password, confirmPassword, termsAccepted);
+        
+        // Fix: Change validation.isValid to just validation
+        if (!validation) {
+            this.setLoadingState('signup-form', false);
+            return;
+        }
+
+        try {
+            // Sign up with Supabase Auth
+            const { data, error } = await this.supabase.auth.signUp({
+                email: email,
+                password: password,
+                options: {
+                    data: {
+                        full_name: name
+                    }
+                }
+            });
+
+            if (error) {
+                throw error;
+            }
+
+            // Show success message for email verification
+            this.showSuccessMessage(
+                'Account created successfully! Please check your email to verify your account before signing in.'
+            );
+            this.closeAllModals();
+            
+        } catch (error) {
+            console.error('Signup error:', error);
+            this.showError('signup-form-error', error.message || 'Failed to create account. Please try again.');
+        } finally {
+            this.setLoadingState('signup-form', false);
+        }
+    }
+
+    async handleLogin(e) {
+        e.preventDefault();
+        this.clearFormErrors();
+        this.setLoadingState('login-form', true);
+
+        const formData = new FormData(e.target);
+        const email = formData.get('email').trim();
+        const password = formData.get('password');
+
+        const validation = this.validateLoginForm(email, password);
+        
+        // Fix: Change validation.isValid to just validation
+        if (!validation) {
+            this.setLoadingState('login-form', false);
+            return;
+        }
+
+        try {
+            // Sign in with Supabase Auth
+            const { data, error } = await this.supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+            if (error) {
+                throw error;
+            }
+
+            // Check if email is verified
+            if (!data.user.email_confirmed_at) {
+                this.showError('login-form-error', 'Please verify your email before signing in. Check your inbox for the verification link.');
+                return;
+            }
+
+            // In handleLogin method, after the email verification check:
+            this.currentUser = data.user;
+            this.showSuccessMessage('Welcome back! You have been successfully logged in.');
+            this.closeAllModals();
+            this.updateUI();
+            
+        } catch (error) {
+            console.error('Login error:', error);
+            this.showError('login-form-error', error.message || 'Invalid email or password.');
+        } finally {
+            this.setLoadingState('login-form', false);
+        }
+    }
+
+    async logout() {
+        try {
+            const { error } = await this.supabase.auth.signOut();
+            if (error) throw error;
+            
+            this.currentUser = null;
+            this.updateUI();
+            this.showSuccessMessage('You have been successfully logged out.');
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
+    }
+
+    async checkLoginStatus() {
+        try {
+            const { data: { user } } = await this.supabase.auth.getUser();
+            this.currentUser = user;
+            this.updateUI();
+        } catch (error) {
+            console.error('Error checking login status:', error);
+        }
+    }
+
+    validateLoginForm(email, password) {
+        let isValid = true;
+
+        if (!email) {
+            this.showError('login-email-error', 'Email is required');
+            isValid = false;
+        } else if (!this.isValidEmail(email)) {
+            this.showError('login-email-error', 'Please enter a valid email');
+            isValid = false;
+        }
+
+        if (!password) {
+            this.showError('login-password-error', 'Password is required');
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    validateSignupForm(name, email, password, confirmPassword, termsAccepted) {
+        let isValid = true;
+
+        if (!name || name.trim().length < 2) {
+            this.showError('signup-name-error', 'Name must be at least 2 characters');
+            isValid = false;
+        }
+
+        if (!email) {
+            this.showError('signup-email-error', 'Email is required');
+            isValid = false;
+        } else if (!this.isValidEmail(email)) {
+            this.showError('signup-email-error', 'Please enter a valid email');
+            isValid = false;
+        }
+
+        if (!password) {
+            this.showError('signup-password-error', 'Password is required');
+            isValid = false;
+        } else if (password.length < 6) {
+            this.showError('signup-password-error', 'Password must be at least 6 characters');
+            isValid = false;
+        }
+
+        if (password !== confirmPassword) {
+            this.showError('signup-confirm-password-error', 'Passwords do not match');
+            isValid = false;
+        }
+
+        if (!termsAccepted) {
+            this.showError('terms-error', 'You must accept the terms and conditions');
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    showError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        const inputElement = errorElement.previousElementSibling;
+        
+        errorElement.textContent = message;
+        errorElement.classList.remove('hidden');
+        inputElement.classList.add('error');
+    }
+
+    clearFormErrors() {
+        const errorElements = document.querySelectorAll('[id$="-error"]');
+        errorElements.forEach(element => {
+            element.classList.add('hidden');
+            element.textContent = '';
+        });
+
+        const inputElements = document.querySelectorAll('input');
+        inputElements.forEach(input => {
+            input.classList.remove('error', 'success');
+        });
+    }
+
+    setLoadingState(formId, isLoading) {
+        const form = document.getElementById(formId);
+        const submitButton = form.querySelector('button[type="submit"]');
+        
+        if (isLoading) {
+            form.classList.add('loading');
+            submitButton.textContent = 'Please wait...';
+            submitButton.disabled = true;
+        } else {
+            form.classList.remove('loading');
+            submitButton.textContent = formId === 'login-form' ? 'Sign In' : 'Create Account';
+            submitButton.disabled = false;
+        }
+    }
+
+    async simulateApiCall() {
+        return new Promise(resolve => setTimeout(resolve, 1000));
+    }
+
+    // Remove this method completely:
+    // loginUser(user) {
+    //     this.currentUser = user;
+    //     localStorage.setItem('reweave_current_user', JSON.stringify(user));
+    //     this.updateUI();
+    // }
+
+    updateUI() {
+        const authSection = document.querySelector('.flex.items-center.space-x-4');
+        
+        if (this.currentUser) {
+            authSection.innerHTML = `
+                <div class="hidden md:flex items-center space-x-3 user-menu">
+                    <span class="text-navy text-sm">Welcome, ${this.currentUser.name}</span>
+                    <div class="relative">
+                        <button id="user-menu-btn" class="bg-navy hover:bg-navy-dark text-white px-4 py-2 rounded-lg text-sm font-medium tracking-wider transition-colors duration-300">
+                            Account
+                        </button>
+                        <div id="user-dropdown" class="user-dropdown hidden">
+                            <a href="#" id="profile-link">Profile</a>
+                            <a href="#" id="settings-link">Settings</a>
+                            <a href="#" id="logout-link">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden focus:outline-none text-navy">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            `;
+            
+            document.getElementById('user-menu-btn')?.addEventListener('click', this.toggleUserDropdown.bind(this));
+            document.getElementById('logout-link')?.addEventListener('click', () => this.logout());
+        } else {
+            authSection.innerHTML = `
+                <div class="hidden md:flex items-center space-x-3">
+                    <button id="login-btn" class="text-navy hover:text-batik-gold transition-colors duration-300 text-sm font-medium tracking-wider">
+                        Login
+                    </button>
+                    <button id="signup-btn" class="bg-navy hover:bg-navy-dark text-white px-4 py-2 rounded-lg text-sm font-medium tracking-wider transition-colors duration-300">
+                        Sign Up
+                    </button>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden focus:outline-none text-navy">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            `;
+            
+            // Add specific event listeners for the newly created buttons
+            document.getElementById('login-btn')?.addEventListener('click', () => this.openLoginModal());
+            document.getElementById('signup-btn')?.addEventListener('click', () => this.openSignupModal());
+            // Remove this line: this.bindEvents();
+        }
+    }
+
+    toggleUserDropdown() {
+        const dropdown = document.getElementById('user-dropdown');
+        dropdown.classList.toggle('hidden');
+    }
+
+    showSuccessMessage(message) {
+        const toast = document.createElement('div');
+        toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.remove();
+        }, 3000);
+    }
+} // Add this closing brace for the AuthSystem class
+
+// Initialize authentication system
+const auth = new AuthSystem();

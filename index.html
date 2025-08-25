@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reweave:
+</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Add Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=11">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#1e3a8a',
+                        'navy-dark': '#1e40af',
+                        'navy-light': '#3b82f6',
+                        'batik-gold': '#fbbf24',
+                        'batik-cream': '#fef3c7'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased font-body">
+    <!-- Batik Pattern Background -->
+    <div class="batik-bg fixed inset-0 opacity-5 pointer-events-none"></div>
+    
+    <header id="header" class="bg-white/95 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-lg border-b border-navy/10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="flex items-center">
+                <span class="text-2xl font-bold text-navy tracking-wider">Reweave</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wider">
+                <a href="#story" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">The Story</a>
+                <a href="#impact" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">Impact</a>
+                <a href="#proof" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">Proof</a>
+                <a href="#journey" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">Journey</a>
+                <a href="#team" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">Team</a>
+                <a href="#contact" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">Get Involved</a>
+            </nav>
+            
+            <!-- Auth Section -->
+            <div class="flex items-center space-x-4">
+                <!-- Desktop Auth Buttons -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <button id="login-btn" class="text-navy hover:text-batik-gold transition-colors duration-300 text-sm font-medium tracking-wider">
+                        Login
+                    </button>
+                    <button id="signup-btn" class="bg-navy hover:bg-navy-dark text-white px-4 py-2 rounded-lg text-sm font-medium tracking-wider transition-colors duration-300">
+                        Sign Up
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden focus:outline-none text-navy">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-navy/10">
+            <a href="#story" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">The Story</a>
+            <a href="#impact" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Impact</a>
+            <a href="#proof" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Proof</a>
+            <a href="#journey" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Journey</a>
+            <a href="#team" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Team</a>
+            <a href="#contact" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Get Involved</a>
+            
+            <!-- Mobile Auth Section -->
+            <div class="border-t border-navy/10 p-4 space-y-3">
+                <button id="mobile-login-btn" class="w-full text-center py-2 text-navy hover:bg-batik-cream/30 rounded-lg text-sm font-medium">
+                    Login
+                </button>
+                <button id="mobile-signup-btn" class="w-full bg-navy hover:bg-navy-dark text-white py-2 rounded-lg text-sm font-medium">
+                    Sign Up
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center relative overflow-hidden batik-pattern-complex">
+            <div class="batik-hero-pattern absolute inset-0 opacity-10"></div>
+            <div class="bg-gradient-to-br from-navy/80 to-navy-dark/90 w-full h-full absolute top-0 left-0"></div>
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <div class="batik-ornament mb-8"></div>
+                <h1 class="hero-title">
+                    Reweave
+                </h1>
+                <p class="hero-subtitle">From Their Hands to Their Future. Play It Forward </p>
+                <div class="batik-divider mx-auto mb-8"></div>
+                <p class="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
+                    Transforming discarded denim into beautiful, sustainable pickleball cases while empowering local artisans
+                </p>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section id="story" class="py-20 md:py-32 bg-white relative">
+            <div class="batik-section-bg absolute inset-0 opacity-40"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center max-w-4xl mx-auto">
+                    <div class="batik-ornament-small mx-auto mb-6"></div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-navy">Carry Your Paddle. Carry a Purpose</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-12">
+                        We turn discarded denim into durable, batik-accented pickleball paddle cases. Each one is hand-crafted by B40 artisans—reducing textile waste while creating dignified, paid work
+                    </p>
+                </div>
+                
+                <div class="mt-16 grid md:grid-cols-2 gap-12 items-center">
+                    <div class="batik-card group">
+                        <div class="batik-card-ornament"></div>
+                        <h3 class="text-2xl font-display font-semibold mb-4 text-batik-gold">The Problem</h3>
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            In Malaysia, poverty isn’t just too little money, it’s too few chances: over 161,000 single mothers, most earning under RM2,000 a month, face 70% with no savings and 45% without childcare that limits work, while joblessness drives a 17% recidivism rate, closing the door for women to rebuild and for children to learn and play.
+                        </p>
+                        <div class="batik-icon-waste"></div>
+                    </div>
+                    
+                    <div class="batik-card group">
+                        <div class="batik-card-ornament"></div>
+                        <h3 class="text-2xl font-display font-semibold mb-4 text-navy">Our Solution</h3>
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            We craft recycled-material pickleball paddle cases, designed to carry your paddle and essentials, adorned with batik, providing paid tailoring work for single and formerly incarcerated moms, while reinvesting percentages of every sale into partner programs that support their re-entry and children’s access to sport
+                        </p>
+                        <div class="batik-icon-solution"></div>
+                    </div>
+                </div>
+                
+                <div class="mt-16 text-center">
+                    <button id="generate-denim-story" class="batik-button">
+                        <span class="batik-button-ornament"></span>
+                        ✨ Generate Denim Story
+                    </button>
+                    <p id="denim-story-output" class="mt-8 text-gray-700 italic max-w-3xl mx-auto text-lg leading-relaxed"></p>
+                    <div id="denim-story-loading" class="hidden mt-6 text-navy">Weaving your story...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section id="impact" class="py-20 md:py-32 bg-gradient-to-br from-batik-cream/30 to-white relative">
+            <div class="batik-section-bg-alt absolute inset-0 opacity-5"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center max-w-4xl mx-auto">
+                    <div class="batik-ornament-small mx-auto mb-6"></div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-navy">Interactive Impact Dashboard</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Our model is built on tangible, measurable impact. Use the calculator below to see how every case sold contributes to our social and environmental mission. The charts visualize our sustainable business model, designed for long-term growth and community benefit.
+                    </p>
+                </div>
+
+                <div class="mt-16 batik-dashboard">
+                    <div class="text-center mb-12">
+                        <label for="cases-slider" class="block text-xl font-display font-semibold mb-4 text-navy">
+                            Number of Cases Sold: <span id="cases-sold-value" class="text-batik-gold font-bold">50</span>
+                        </label>
+                        <div class="batik-slider-container">
+                            <input id="cases-slider" type="range" min="1" max="1000" value="50" class="batik-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-8 mb-16">
+                        <div class="batik-metric-card">
+                            <div class="batik-metric-ornament"></div>
+                            <h4 class="text-lg font-display font-semibold text-navy mb-2">Jeans Upcycled</h4>
+                            <p id="jeans-upcycled" class="text-4xl font-bold text-batik-gold">50</p>
+                        </div>
+                        <div class="batik-metric-card">
+                            <div class="batik-metric-ornament"></div>
+                            <h4 class="text-lg font-display font-semibold text-navy mb-2">Water Saved (Liters)</h4>
+                            <p id="water-saved" class="text-4xl font-bold text-batik-gold">60,000</p>
+                        </div>
+                        <div class="batik-metric-card">
+                            <div class="batik-metric-ornament"></div>
+                            <h4 class="text-lg font-display font-semibold text-navy mb-2">Paid to Artisans (RM)</h4>
+                            <p id="paid-to-artisans" class="text-4xl font-bold text-batik-gold">1,250</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mb-16">
+                        <button id="generate-impact-summary" class="batik-button">
+                            <span class="batik-button-ornament"></span>
+                            ✨ Summarize Impact
+                        </button>
+                        <p id="impact-summary-output" class="mt-8 text-gray-700 italic max-w-3xl mx-auto text-lg leading-relaxed"></p>
+                        <div id="impact-summary-loading" class="hidden mt-6 text-navy">Calculating impact...</div>
+                    </div>
+                </div>
+
+                <!-- Add spacing here -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="batik-chart-container">
+                        <h3 class="text-2xl font-display font-bold text-center mb-4 text-navy">Business Sustainability</h3>
+                        <p class="text-center text-gray-600 mb-8">Our financial model ensures viability, with over 40% profit margin reinvested into growth and artisan support.</p>
+                        <div class="chart-container">
+                            <canvas id="costChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="batik-chart-container">
+                        <h3 class="text-2xl font-display font-bold text-center mb-4 text-navy">Revenue Streams</h3>
+                        <p class="text-center text-gray-600 mb-8">We diversify our income through direct sales, partnerships, and creative product extensions.</p>
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proof Section -->
+        <section id="proof" class="py-20 md:py-32 bg-white relative">
+            <div class="batik-section-bg absolute inset-0 opacity-5"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center max-w-4xl mx-auto">
+                    <div class="batik-ornament-small mx-auto mb-6"></div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-navy">Real Demand, Real Feedback</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        We didn't just guess. We went to the courts and spoke with over 10 players. Their feedback was overwhelmingly positive, validating our design, our mission, and a price point of RM89-RM109. This is a product people want.
+                    </p>
+                </div>
+                
+                <div class="mt-16">
+                    <div class="batik-testimonials-container">
+                        <div id="quotes-container" class="flex overflow-x-hidden">
+                            <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4 quote-slide">
+                                <div class="batik-testimonial-card">
+                                    <div class="batik-quote-ornament"></div>
+                                    <p class="text-gray-700 italic text-lg leading-relaxed mb-6">
+                                        "I love that it's made from denim; it feels so much more durable and unique than anything else out there."
+                                    </p>
+                                    <p class="font-display font-semibold text-navy">- Pickleball Player, Taman Tasik Titiwangsa</p>
+                                </div>
+                            </div>
+                            <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4 quote-slide">
+                                <div class="batik-testimonial-card">
+                                    <div class="batik-quote-ornament"></div>
+                                    <p class="text-gray-700 italic text-lg leading-relaxed mb-6">
+                                        "Knowing this supports local women makes it an instant buy for me. The story is as good as the product."
+                                    </p>
+                                    <p class="font-display font-semibold text-navy">- Player, Padang Merbok</p>
+                                </div>
+                            </div>
+                            <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4 quote-slide">
+                                <div class="batik-testimonial-card">
+                                    <div class="batik-quote-ornament"></div>
+                                    <p class="text-gray-700 italic text-lg leading-relaxed mb-6">
+                                        "The quality is top-notch. I'd easily pay over RM100 for this, especially with custom embroidery."
+                                    </p>
+                                    <p class="font-display font-semibold text-navy">- Club Member, KL</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Section -->
+        <section id="journey" class="py-20 md:py-32 bg-gradient-to-br from-batik-cream/30 to-white relative">
+            <div class="batik-section-bg-alt absolute inset-0 opacity-5"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center max-w-4xl mx-auto">
+                    <div class="batik-ornament-small mx-auto mb-6"></div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-navy">Our Journey & Roadmap</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        This is just the beginning. We have a clear, actionable 10-week plan to move from concept to a fully operational social enterprise, hitting key milestones for production, sales, and impact measurement along the way.
+                    </p>
+                </div>
+                
+                <div class="mt-16 max-w-3xl mx-auto">
+                    <div class="batik-timeline">
+                        <div id="phase1" class="batik-timeline-item">
+                            <div class="batik-timeline-ornament"></div>
+                            <h3 class="text-xl font-display font-bold text-navy mb-2">Phase 1: Validation (Weeks 1-3)</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Finalized prototype based on user feedback and successfully completed Midpoint Pitch.
+                            </p>
+                        </div>
+                        <div id="phase2" class="batik-timeline-item">
+                            <div class="batik-timeline-ornament"></div>
+                            <h3 class="text-xl font-display font-bold text-navy mb-2">Phase 2: Proof of Concept (Weeks 4-6)</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Onboard artisans, begin first production run, launch pre-orders, and host first pop-up booth.
+                            </p>
+                        </div>
+                        <div id="phase3" class="batik-timeline-item">
+                            <div class="batik-timeline-ornament"></div>
+                            <h3 class="text-xl font-display font-bold text-navy mb-2">Phase 3: Scaling (Weeks 7-10)</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Launch on online marketplaces, measure and report social impact metrics, and deliver Final Pitch.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meet the Team Section -->
+        <section id="team" class="py-20 md:py-32 bg-white relative">
+            <div class="batik-section-bg absolute inset-0 opacity-40"></div>
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-navy mb-4">Meet the Team</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">The passionate individuals behind Reweave's mission to transform waste into wonder.</p>
+                </div>
+                
+                <!-- Simple Grid Layout -->
+                <div class="max-w-5xl mx-auto">
+                    <!-- All 5 members in one responsive grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 justify-items-center">
+                        
+                        <!-- Howie -->
+                        <div class="team-member-card group w-full max-w-xs">
+                            <div class="batik-card h-full p-6">
+                                <div class="text-center">
+                                    <div class="w-32 h-32 mx-auto bg-gradient-to-br from-navy to-batik-gold rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4">
+                                        H
+                                    </div>
+                                    <h3 class="text-lg font-display font-bold text-navy mb-1">Howie</h3>
+                                    <p class="text-batik-gold font-medium text-sm">Founder</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- JiaYuan -->
+                        <div class="team-member-card group w-full max-w-xs">
+                            <div class="batik-card h-full p-6">
+                                <div class="text-center">
+                                    <div class="w-32 h-32 mx-auto bg-gradient-to-br from-navy to-batik-gold rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4">
+                                        JY
+                                    </div>
+                                    <h3 class="text-lg font-display font-bold text-navy mb-1">JiaYuan</h3>
+                                    <p class="text-batik-gold font-medium text-sm">Co Founder</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Viman -->
+                        <div class="team-member-card group w-full max-w-xs">
+                            <div class="batik-card h-full p-6">
+                                <div class="text-center">
+                                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden mb-4">
+                                        <img src="images/team/viman.jpg" alt="Viman" class="w-full h-full object-cover">
+                                    </div>
+                                    <h3 class="text-lg font-display font-bold text-navy mb-1">Viman</h3>
+                                    <p class="text-batik-gold font-medium text-sm">Co Founder</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Adz Arief -->
+                        <div class="team-member-card group w-full max-w-xs">
+                            <div class="batik-card h-full p-6">
+                                <div class="text-center">
+                                    <div class="w-32 h-32 mx-auto bg-gradient-to-br from-navy to-batik-gold rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4">
+                                        AA
+                                    </div>
+                                    <h3 class="text-lg font-display font-bold text-navy mb-1">Adz Arief</h3>
+                                    <p class="text-batik-gold font-medium text-sm">Co Founder</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Amyla -->
+                        <div class="team-member-card group w-full max-w-xs">
+                            <div class="batik-card h-full p-6">
+                                <div class="text-center">
+                                    <div class="w-32 h-32 mx-auto bg-gradient-to-br from-navy to-batik-gold rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4">
+                                        A
+                                    </div>
+                                    <h3 class="text-lg font-display font-bold text-navy mb-1">Amyla</h3>
+                                    <p class="text-batik-gold font-medium text-sm">Co Founder</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 bg-navy relative overflow-hidden">
+            <div class="batik-contact-pattern absolute inset-0 opacity-10"></div>
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <div class="batik-ornament-white mx-auto mb-8"></div>
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-white">Join the Reweave Movement</h2>
+                <p class="text-lg text-batik-cream max-w-3xl mx-auto mb-12 leading-relaxed">
+                    We are a team dedicated to making a difference through thoughtful design and social enterprise. We are currently seeking mentorship, partnerships, and guidance to help us scale our impact.
+                </p>
+                <a href="mailto:hello@reweave.my" class="batik-button-white">
+                    <span class="batik-button-ornament-white"></span>
+                    Get involved with us now!
+                </a>
+            
+                <!-- Social links -->
+                <div class="social-links mt-8 flex items-center justify-center gap-4">
+                    <!-- Instagram -->
+                    <a
+                        href="https://instagram.com/reweave.my"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-link"
+                        aria-label="Follow us on Instagram"
+                        title="Instagram"
+                    >
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+                        </svg>
+                    </a>
+            
+                    <!-- LinkedIn -->
+                    <a
+                        href="https://www.linkedin.com/in/reweave-my-6ba99337b"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-link"
+                        aria-label="Connect with us on LinkedIn"
+                        title="LinkedIn"
+                    >
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6C21.7 7.6 24 10 24 14.3V24h-5V15.4c0-2.05-.73-3.45-2.56-3.45-1.4 0-2.24.94-2.6 1.85-.13.32-.16.77-.16 1.22V24h-5V8z"/>
+                        </svg>
+                    </a>
+            
+                    <!-- WhatsApp -->
+                    <a
+                        href="https://wa.me/1234567890"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-link"
+                        aria-label="Chat with us on WhatsApp"
+                        title="WhatsApp"
+                    >
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 2a9.9 9.9 0 0 0-8.49 15.1L2 22l4.99-1.47A10 10 0 1 0 12 2zm0 2a8 8 0 0 1 6.86 12.1l-.29.43.18.52-2.78-.82-.24.02A8 8 0 1 1 12 4zm-4 4.8c.1-.22.3-.5.57-.5h.42c.12 0 .27 0 .4.3.15.34.5 1.16.55 1.25.05.1.08.2.01.32-.06.12-.09.2-.19.33-.1.12-.2.27-.28.37-.1.12-.2.25-.09.45.1.2.44.72.95 1.16.66.56 1.21.73 1.41.82.2.08.32.07.44-.05.12-.12.5-.58.63-.78.12-.2.26-.17.43-.1.16.06 1.04.49 1.22.58.18.09.3.13.35.2.05.07.05.4-.1.78-.15.37-.87 1.02-1.2 1.25-.34.23-.78.34-1.25.34s-1.2-.18-2.04-.66c-.85-.48-1.84-1.35-2.4-2.12-.55-.77-.78-1.41-.87-1.65-.09-.24-.2-.9.02-1.36z"/>
+                        </svg>
+                    </a>
+            
+                    <!-- Shopee -->
+                    <a
+                        href="https://shopee.com/yourstore"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-link"
+                        aria-label="Shop on Shopee"
+                        title="Shopee"
+                    >
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M7 7h10l1 12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2l1-12zm2-3a3 3 0 0 1 6 0v1h-2V4a1 1 0 1 0-2 0v1H9V4z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-navy-dark text-white py-8 relative">
+        <div class="batik-footer-pattern absolute inset-0 opacity-5"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="batik-ornament-small-white mx-auto mb-4"></div>
+            <p class="text-batik-cream">&copy; 2025 Reweave. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal-overlay hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="modal-content bg-white rounded-lg shadow-xl max-w-md w-full max-h-screen overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-display font-bold text-navy">Welcome Back</h2>
+                    <button id="close-login-modal" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+                </div>
+                
+                <form id="login-form" class="space-y-4">
+                    <div>
+                        <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="login-email" name="email" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent">
+                        <span id="login-email-error" class="text-red-500 text-sm hidden"></span>
+                    </div>
+                    
+                    <div>
+                        <label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input type="password" id="login-password" name="password" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent">
+                        <span id="login-password-error" class="text-red-500 text-sm hidden"></span>
+                    </div>
+                    
+                    <!-- Add this general error display element -->
+                    <div id="login-form-error" class="text-red-500 text-sm text-center hidden bg-red-50 p-2 rounded"></div>
+                    
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded border-gray-300 text-navy focus:ring-navy">
+                            <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                        </label>
+                        <a href="#" class="text-sm text-navy hover:text-batik-gold">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-navy hover:bg-navy-dark text-white py-2 px-4 rounded-lg font-medium transition-colors duration-300">
+                        Sign In
+                    </button>
+                    
+                    <div class="text-center">
+                        <span class="text-sm text-gray-600">Don't have an account? </span>
+                        <button type="button" id="switch-to-signup" class="text-sm text-navy hover:text-batik-gold font-medium">Sign up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal-overlay hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="modal-content bg-white rounded-lg shadow-xl max-w-md w-full max-h-screen overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-display font-bold text-navy">Join Reweave</h2>
+                    <button id="close-signup-modal" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+                </div>
+                
+                <form id="signup-form" class="space-y-4">
+                    <div>
+                        <label for="signup-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" id="signup-name" name="name" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent">
+                        <span id="signup-name-error" class="text-red-500 text-sm hidden"></span>
+                    </div>
+                    
+                    <div>
+                        <label for="signup-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="signup-email" name="email" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent">
+                        <span id="signup-email-error" class="text-red-500 text-sm hidden"></span>
+                    </div>
+                    
+                    <div>
+                        <label for="signup-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input type="password" id="signup-password" name="password" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent">
+                        <span id="signup-password-error" class="text-red-500 text-sm hidden"></span>
+                    </div>
+                    
+                    <div>
+                        <label for="signup-confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                        <input type="password" id="signup-confirm-password" name="confirmPassword" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent">
+                        <span id="signup-confirm-password-error" class="text-red-500 text-sm hidden"></span>
+                    </div>
+                    
+                    <div>
+                        <label class="flex items-center">
+                            <input type="checkbox" id="terms-checkbox" required class="rounded border-gray-300 text-navy focus:ring-navy">
+                            <span class="ml-2 text-sm text-gray-600">I agree to the <a href="#" class="text-navy hover:text-batik-gold">Terms of Service</a> and <a href="#" class="text-navy hover:text-batik-gold">Privacy Policy</a></span>
+                        </label>
+                        <span id="terms-error" class="text-red-500 text-sm hidden"></span>
+                    </div>
+                    
+                    <!-- Add this general error display element -->
+                    <div id="signup-form-error" class="text-red-500 text-sm text-center hidden bg-red-50 p-2 rounded"></div>
+                    
+                    <button type="submit" class="w-full bg-navy hover:bg-navy-dark text-white py-2 px-4 rounded-lg font-medium transition-colors duration-300">
+                        Create Account
+                    </button>
+                    
+                    <div class="text-center">
+                        <span class="text-sm text-gray-600">Already have an account? </span>
+                        <button type="button" id="switch-to-login" class="text-sm text-navy hover:text-batik-gold font-medium">Sign in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

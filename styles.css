@@ -1,0 +1,1073 @@
+/* Reweave - Batik-Inspired Styles */
+/* Navy Blue & White Color Scheme with Indonesian Batik Elements */
+
+:root {
+    --navy: #1e3a8a;
+    --navy-dark: #1e40af;
+    --navy-light: #3b82f6;
+    --batik-gold: #fbbf24;
+    --batik-cream: #fef3c7;
+    --white: #ffffff;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-700: #374151;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--white);
+    color: var(--navy);
+    line-height: 1.6;
+}
+
+/* Authentic Batik Pattern Backgrounds */
+.batik-pattern-bg {
+    background-image: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="authentic-batik" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><g fill="none" stroke="%231e3a8a" stroke-width="1" opacity="0.3"><path d="M20,20 Q30,10 40,20 Q50,30 60,20 Q70,10 80,20" fill="none"/><circle cx="25" cy="25" r="8" fill="%23fbbf24" opacity="0.2"/><path d="M15,15 Q25,5 35,15 Q45,25 55,15 Q65,5 75,15 Q85,25 95,15" fill="none"/><circle cx="75" cy="75" r="12" fill="none" stroke="%23fbbf24" stroke-width="2" opacity="0.4"/><path d="M70,70 Q75,65 80,70 Q85,75 80,80 Q75,85 70,80 Q65,75 70,70" fill="%231e3a8a" opacity="0.15"/><g transform="translate(40,40)"><path d="M0,0 Q5,-5 10,0 Q15,5 20,0 Q25,-5 30,0" stroke="%23fbbf24" opacity="0.6"/><circle cx="15" cy="15" r="3" fill="%231e3a8a" opacity="0.4"/></g><g transform="translate(10,60)"><path d="M0,10 Q10,0 20,10 Q30,20 40,10 Q50,0 60,10" stroke="%23fbbf24" stroke-width="1.5" opacity="0.5"/><ellipse cx="30" cy="10" rx="8" ry="4" fill="%231e3a8a" opacity="0.2"/></g></g></pattern></defs><rect width="200" height="200" fill="url(%23authentic-batik)"/></svg>'),
+        radial-gradient(circle at 25% 25%, rgba(251, 191, 36, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(30, 58, 138, 0.08) 0%, transparent 50%);
+    background-size: 200px 200px, 120px 120px, 80px 80px;
+    background-position: 0 0, 60px 60px, 30px 30px;
+}
+
+.batik-pattern-complex {
+    background-image: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><pattern id="complex-batik" x="0" y="0" width="150" height="150" patternUnits="userSpaceOnUse"><g fill="none" stroke="%231e3a8a" stroke-width="1.5" opacity="0.4"><path d="M75,25 Q85,15 95,25 Q105,35 115,25 Q125,15 135,25" fill="none"/><path d="M25,75 Q35,65 45,75 Q55,85 65,75 Q75,65 85,75" fill="none"/><circle cx="75" cy="75" r="20" fill="none" stroke="%23fbbf24" stroke-width="2" opacity="0.6"/><path d="M55,55 Q75,35 95,55 Q115,75 95,95 Q75,115 55,95 Q35,75 55,55" fill="%23fbbf24" opacity="0.1" stroke="%231e3a8a" stroke-width="1"/><g transform="translate(75,75)"><path d="M-15,-15 Q0,-25 15,-15 Q25,0 15,15 Q0,25 -15,15 Q-25,0 -15,-15" fill="%231e3a8a" opacity="0.2"/><circle cx="0" cy="0" r="8" fill="none" stroke="%23fbbf24" stroke-width="1.5" opacity="0.8"/></g><g transform="translate(25,25)"><path d="M0,0 L10,5 L15,15 L10,25 L0,20 L-5,10 Z" fill="%23fbbf24" opacity="0.3" stroke="%231e3a8a" stroke-width="0.5"/></g><g transform="translate(125,125)"><path d="M0,0 L8,3 L12,12 L8,20 L0,16 L-4,8 Z" fill="%23fbbf24" opacity="0.3" stroke="%231e3a8a" stroke-width="0.5"/></g></g></pattern></defs><rect width="300" height="300" fill="url(%23complex-batik)"/></svg>'),
+        linear-gradient(45deg, transparent 48%, rgba(251, 191, 36, 0.03) 50%, transparent 52%);
+    background-size: 300px 300px, 60px 60px;
+    background-position: 0 0, 0 0;
+}
+
+/* Batik Background Patterns */
+.batik-bg {
+    background-image: 
+        radial-gradient(circle at 25% 25%, var(--navy) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, var(--batik-gold) 1px, transparent 1px),
+        linear-gradient(45deg, transparent 40%, var(--navy) 40%, var(--navy) 60%, transparent 60%);
+    background-size: 40px 40px, 20px 20px, 80px 80px;
+    background-position: 0 0, 10px 10px, 0 0;
+}
+
+.batik-hero-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><pattern id="hero-batik" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse"><g fill="none" stroke="%231e3a8a" stroke-width="2" opacity="0.2"><path d="M100,50 Q120,30 140,50 Q160,70 180,50 Q200,30 220,50" fill="none"/><path d="M50,100 Q70,80 90,100 Q110,120 130,100 Q150,80 170,100" fill="none"/><circle cx="100" cy="100" r="30" fill="none" stroke="%23fbbf24" stroke-width="3" opacity="0.4"/><path d="M70,70 Q100,40 130,70 Q160,100 130,130 Q100,160 70,130 Q40,100 70,70" fill="%23fbbf24" opacity="0.08" stroke="%231e3a8a" stroke-width="1.5"/><g transform="translate(100,100)"><path d="M-20,-20 Q0,-35 20,-20 Q35,0 20,20 Q0,35 -20,20 Q-35,0 -20,-20" fill="%231e3a8a" opacity="0.15"/><circle cx="0" cy="0" r="12" fill="none" stroke="%23fbbf24" stroke-width="2" opacity="0.6"/><path d="M-8,-8 L8,-8 L8,8 L-8,8 Z" fill="%23fbbf24" opacity="0.3" transform="rotate(45)"/></g><g transform="translate(50,50)"><path d="M0,0 L15,8 L20,20 L15,32 L0,25 L-8,15 Z" fill="%23fbbf24" opacity="0.25" stroke="%231e3a8a" stroke-width="1"/></g><g transform="translate(150,150)"><path d="M0,0 L12,6 L16,16 L12,26 L0,20 L-6,12 Z" fill="%23fbbf24" opacity="0.25" stroke="%231e3a8a" stroke-width="1"/></g></g></pattern></defs><rect width="400" height="400" fill="url(%23hero-batik)"/></svg>'),
+        radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(30, 58, 138, 0.12) 0%, transparent 40%);
+    background-size: 400px 400px, 250px 250px, 300px 300px;
+    background-position: 0 0, 125px 125px, 50px 50px;
+    opacity: 0.7;
+    z-index: -1;
+    animation: batik-hero-float 20s ease-in-out infinite;
+}
+
+@keyframes batik-hero-float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-10px) rotate(1deg);
+    }
+    66% {
+        transform: translateY(5px) rotate(-0.5deg);
+    }
+}
+
+.batik-section-bg {
+    background-image:
+        radial-gradient(circle at 30% 70%, var(--navy) 1px, transparent 1px),
+        radial-gradient(circle at 70% 30%, var(--batik-gold) 1px, transparent 1px);
+    background-size: 50px 50px, 30px 30px;
+}
+
+.batik-section-bg-alt {
+    background-image:
+        linear-gradient(60deg, transparent 30%, var(--navy) 30%, var(--navy) 32%, transparent 32%),
+        linear-gradient(-60deg, transparent 30%, var(--batik-gold) 30%, var(--batik-gold) 32%, transparent 32%);
+    background-size: 100px 100px;
+}
+
+.batik-contact-pattern {
+    background-image:
+        radial-gradient(circle at 25% 25%, var(--batik-gold) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, var(--white) 1px, transparent 1px),
+        repeating-linear-gradient(30deg, transparent, transparent 15px, var(--batik-gold) 15px, var(--batik-gold) 17px);
+    background-size: 80px 80px, 40px 40px, 120px 120px;
+}
+
+.batik-footer-pattern {
+    background-image:
+        radial-gradient(circle at 50% 50%, var(--batik-gold) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+/* Batik Ornamental Elements */
+.batik-ornament {
+    width: 80px;
+    height: 20px;
+    background-image:
+        radial-gradient(circle at 10px 10px, var(--batik-gold) 3px, transparent 3px),
+        radial-gradient(circle at 30px 10px, var(--white) 2px, transparent 2px),
+        radial-gradient(circle at 50px 10px, var(--batik-gold) 3px, transparent 3px),
+        radial-gradient(circle at 70px 10px, var(--white) 2px, transparent 2px);
+    background-size: 20px 20px;
+    position: relative;
+}
+
+.batik-ornament::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--batik-gold), transparent);
+    transform: translateY(-50%);
+}
+
+.batik-ornament-small {
+    width: 60px;
+    height: 15px;
+    background-image:
+        radial-gradient(circle at 15px 7px, var(--navy) 2px, transparent 2px),
+        radial-gradient(circle at 45px 7px, var(--navy) 2px, transparent 2px);
+    background-size: 30px 15px;
+    position: relative;
+}
+
+.batik-ornament-small::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--navy), transparent);
+    transform: translateY(-50%);
+}
+
+.batik-ornament-white {
+    width: 80px;
+    height: 20px;
+    background-image:
+        radial-gradient(circle at 10px 10px, var(--white) 3px, transparent 3px),
+        radial-gradient(circle at 30px 10px, var(--batik-gold) 2px, transparent 2px),
+        radial-gradient(circle at 50px 10px, var(--white) 3px, transparent 3px),
+        radial-gradient(circle at 70px 10px, var(--batik-gold) 2px, transparent 2px);
+    background-size: 20px 20px;
+    position: relative;
+}
+
+.batik-ornament-white::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--white), transparent);
+    transform: translateY(-50%);
+}
+
+.batik-ornament-small-white {
+    width: 40px;
+    height: 10px;
+    background-image:
+        radial-gradient(circle at 10px 5px, var(--white) 1px, transparent 1px),
+        radial-gradient(circle at 30px 5px, var(--white) 1px, transparent 1px);
+    background-size: 20px 10px;
+    position: relative;
+}
+
+.batik-ornament-small-white::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--white), transparent);
+    transform: translateY(-50%);
+}
+
+/* Logo Styling */
+.batik-logo {
+    position: relative;
+    display: inline-block;
+}
+
+.batik-logo::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--navy), var(--batik-gold), var(--navy));
+    border-radius: 1px;
+}
+
+/* Text Effects */
+.batik-text-shadow {
+    text-shadow: 0 2px 4px rgba(30, 58, 138, 0.1);
+}
+
+.batik-text-glow {
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.3), 0 0 40px rgba(251, 191, 36, 0.2);
+}
+
+/* Divider */
+.batik-divider {
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--batik-gold), var(--white), var(--batik-gold), transparent);
+    position: relative;
+}
+
+.batik-divider::before,
+.batik-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    background: var(--batik-gold);
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.batik-divider::before {
+    left: -12px;
+}
+
+.batik-divider::after {
+    right: -12px;
+}
+
+/* Card Styles */
+.batik-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(30, 58, 138, 0.1);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.batik-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--navy), var(--batik-gold));
+    z-index: -1;
+    margin: -2px;
+    border-radius: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.batik-card:hover::before {
+    opacity: 1;
+}
+
+.batik-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(30, 58, 138, 0.15);
+}
+
+.batik-card-ornament {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 30px;
+    height: 30px;
+    background-image:
+        radial-gradient(circle at 15px 15px, var(--batik-gold) 2px, transparent 2px),
+        radial-gradient(circle at 5px 5px, var(--navy) 1px, transparent 1px),
+        radial-gradient(circle at 25px 5px, var(--navy) 1px, transparent 1px),
+        radial-gradient(circle at 5px 25px, var(--navy) 1px, transparent 1px),
+        radial-gradient(circle at 25px 25px, var(--navy) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.batik-card:hover .batik-card-ornament {
+    opacity: 0.6;
+}
+
+/* Icons */
+.batik-icon-waste {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, var(--gray-100), var(--gray-700));
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.batik-icon-waste::before {
+    content: '🗑️';
+}
+
+.batik-icon-solution {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, var(--batik-gold), var(--navy));
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.batik-icon-solution::before {
+    content: '✨';
+    color: var(--white);
+}
+
+/* Buttons */
+.batik-button {
+    background: linear-gradient(135deg, var(--navy), var(--navy-dark));
+    color: var(--white);
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.batik-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.batik-button:hover::before {
+    left: 100%;
+}
+
+.batik-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+}
+
+.batik-button-ornament {
+    width: 20px;
+    height: 20px;
+    background-image:
+        radial-gradient(circle at 10px 10px, var(--batik-gold) 2px, transparent 2px);
+    background-size: 20px 20px;
+}
+
+.batik-button-white {
+    background: linear-gradient(135deg, var(--white), var(--batik-cream));
+    color: var(--navy);
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    border: 2px solid var(--batik-gold);
+    font-size: 1.1rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.batik-button-white:hover {
+    background: linear-gradient(135deg, var(--batik-gold), var(--batik-cream));
+    color: var(--navy-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+}
+
+.batik-button-ornament-white {
+    width: 20px;
+    height: 20px;
+    background-image:
+        radial-gradient(circle at 10px 10px, var(--navy) 2px, transparent 2px);
+    background-size: 20px 20px;
+}
+
+/* Dashboard Styles */
+.batik-dashboard {
+    background: linear-gradient(135deg, var(--white), var(--batik-cream));
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(30, 58, 138, 0.1);
+    border: 3px solid var(--batik-gold);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 4rem; /* Add bottom margin to prevent overlap */
+}
+
+.batik-dashboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 20%, var(--navy) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, var(--batik-gold) 1px, transparent 1px);
+    background-size: 40px 40px, 60px 60px;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+/* Slider Styles */
+.batik-slider-container {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.batik-slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--gray-100), var(--batik-cream));
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.batik-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), var(--batik-gold));
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(30, 58, 138, 0.3);
+    transition: all 0.3s ease;
+}
+
+.batik-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(30, 58, 138, 0.4);
+}
+
+.batik-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), var(--batik-gold));
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 8px rgba(30, 58, 138, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Metric Cards */
+.batik-metric-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(30, 58, 138, 0.1);
+    border: 2px solid var(--batik-cream);
+    position: relative;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.batik-metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(30, 58, 138, 0.15);
+    border-color: var(--batik-gold);
+}
+
+.batik-metric-ornament {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 20px;
+    height: 20px;
+    background-image:
+        radial-gradient(circle at 10px 10px, var(--batik-gold) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.4;
+}
+
+/* Chart Containers */
+.batik-chart-container {
+    background: linear-gradient(135deg, var(--white), var(--gray-50));
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(30, 58, 138, 0.1);
+    border: 2px solid var(--batik-cream);
+    position: relative;
+    overflow: hidden;
+}
+
+.batik-chart-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 90% 10%, var(--navy) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    height: 300px;
+}
+
+@media (min-width: 768px) {
+    .chart-container {
+        height: 350px;
+    }
+}
+
+/* Testimonials */
+.batik-testimonials-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.batik-testimonial-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(30, 58, 138, 0.1);
+    border: 2px solid var(--batik-cream);
+    height: 100%;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.batik-testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(30, 58, 138, 0.15);
+    border-color: var(--batik-gold);
+}
+
+.batik-quote-ornament {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 30px;
+    height: 30px;
+    background-image:
+        radial-gradient(circle at 15px 15px, var(--batik-gold) 3px, transparent 3px);
+    background-size: 30px 30px;
+    opacity: 0.3;
+}
+
+.batik-quote-ornament::before {
+    content: '"';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--navy);
+}
+
+/* Timeline */
+.batik-timeline {
+    position: relative;
+    padding-left: 3rem;
+}
+
+.batik-timeline::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--navy), var(--batik-gold), var(--navy));
+    border-radius: 2px;
+}
+
+.batik-timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(30, 58, 138, 0.1);
+    border: 2px solid var(--batik-cream);
+    transition: all 0.3s ease;
+}
+
+.batik-timeline-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 12px 30px rgba(30, 58, 138, 0.15);
+    border-color: var(--batik-gold);
+}
+
+.batik-timeline-ornament {
+    position: absolute;
+    left: -2.5rem;
+    top: 1.5rem;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, var(--navy), var(--batik-gold));
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    box-shadow: 0 4px 8px rgba(30, 58, 138, 0.2);
+    z-index: 10;
+}
+
+.batik-timeline-ornament::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: var(--white);
+    border-radius: 50%;
+}
+
+/* Navigation */
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--navy), var(--batik-gold));
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.active-nav::after {
+    width: 100%;
+}
+
+.active-nav {
+    color: var(--batik-gold) !important;
+    font-weight: 600;
+}
+
+/* Add specific spacing for the charts grid after dashboard */
+#impact .grid {
+    margin-top: 4rem !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .batik-dashboard {
+        padding: 2rem 1.5rem;
+        margin-bottom: 3rem; /* Smaller margin on mobile */
+    }
+    
+    .batik-card {
+        padding: 1.5rem;
+    }
+    
+    .batik-timeline {
+        padding-left: 2rem;
+    }
+    
+    .batik-timeline-ornament {
+        left: -1.5rem;
+    }
+    
+    #impact .grid {
+        margin-top: 3rem !important;
+    }
+}
+
+/* Animation Classes */
+@keyframes batik-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.batik-fade-in {
+    animation: batik-fade-in 0.6s ease-out;
+}
+
+@keyframes batik-slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.batik-slide-in {
+    animation: batik-slide-in 0.8s ease-out;
+}
+
+/* Scroll Animations */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.scroll-animate.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Loading States */
+.loading-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Hero Section */
+.hero-title {
+    font-size: 12rem !important;
+    font-weight: 700 !important;
+    color: white !important;
+    text-shadow: 0 8px 16px rgba(30, 58, 138, 0.4) !important;
+    margin-bottom: 1rem !important;
+    position: relative !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important;
+    transform-origin: center !important;
+    line-height: 0.9 !important;
+    letter-spacing: -0.02em !important;
+    display: block !important;
+}
+
+.hero-title:hover {
+    color: #fbbf24 !important;
+}
+
+@keyframes batik-gradient-flow {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+
+
+.hero-subtitle {
+    font-size: 4rem !important;
+    color: #fbbf24 !important;
+    font-weight: 500 !important;
+    margin-bottom: 2rem !important;
+    opacity: 0.9 !important;
+    transition: color 0.3s ease !important;
+    cursor: pointer !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.01em !important;
+    display: block !important;
+}
+
+.hero-subtitle:hover {
+    color: white !important;
+}
+
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 8rem !important;
+        line-height: 0.9 !important;
+    }
+    .hero-subtitle {
+        font-size: 3rem !important;
+        line-height: 1.1 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 5rem !important;
+        line-height: 0.9 !important;
+    }
+    .hero-subtitle {
+        font-size: 2rem !important;
+        line-height: 1.1 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 3.5rem !important;
+        line-height: 0.9 !important;
+    }
+    .hero-subtitle {
+        font-size: 1.5rem !important;
+        line-height: 1.1 !important;
+    }
+}
+
+/* Problem and Solution Cards */
+.problem-card, .solution-card {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.05) 0%, rgba(251, 191, 36, 0.05) 100%);
+    border: 2px solid rgba(30, 58, 138, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.batik-card:hover {
+    background: linear-gradient(135deg, #1e3a8a 0%, #fbbf24 100%);
+    border-color: #fbbf24;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(30, 58, 138, 0.3);
+}
+
+.batik-card:hover p,
+.batik-card:hover .text-gray-600 {
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.batik-card:hover .batik-ornament {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    animation: slideIn 0.3s ease-out;
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form Input Focus States */
+input:focus {
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+}
+
+/* Error States */
+.error {
+    border-color: #ef4444 !important;
+}
+
+.error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+/* Success States */
+.success {
+    border-color: #10b981 !important;
+}
+
+.success:focus {
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+/* Loading State */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* User Menu Styles */
+.user-menu {
+    position: relative;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 1000;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 12px 16px;
+    color: #374151;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.user-dropdown a:hover {
+    background-color: #f9fafb;
+}
+
+/* CLEAN RESET - Team section without overlapping */
+/* Remove all previous team styling and start fresh */
+
+/* Basic team card styling */
+.team-member-card {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+.team-member-card .batik-card {
+    padding: 1.5rem;
+    min-height: 300px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+}
+
+.team-member-card:hover .batik-card {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Profile images - standard size */
+.team-member-card .w-32 {
+    width: 128px !important;
+    height: 128px !important;
+    margin-bottom: 1rem !important;
+}
+
+.team-member-card .w-32 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Text styling - clean and readable */
+.team-member-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #1e3a8a;
+}
+
+.team-member-card p {
+    font-size: 0.875rem;
+    color: #fbbf24;
+    font-weight: 500;
+}
+
+/* Grid layout - simple and reliable */
+#team .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    #team .grid {
+        gap: 2.5rem;
+    }
+    
+    .team-member-card {
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 767px) {
+    #team .grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .team-member-card {
+        max-width: 300px;
+    }
+}
+
+/* Remove any conflicting styles */
+.team-container,
+.team-container .grid:first-child,
+.team-container .grid:last-child {
+    all: unset;
+}
