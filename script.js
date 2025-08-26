@@ -5,7 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
     initializeNavigation();
     initializeImpactCalculator();
-    initializeCharts();
+
+    // Initialize charts only if canvases exist
+    if (document.getElementById('costChart')) {
+        initializeCostChart();
+    }
+    if (document.getElementById('revenueChart')) {
+        initializeRevenueChart();
+    }
+
     initializeScrollAnimations();
     initializeIntersectionObserver();
     initializeGeminiAPI();

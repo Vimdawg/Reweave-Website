@@ -159,7 +159,7 @@
                 <!-- Heading -->
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <div class="batik-ornament-small mx-auto mb-4"></div>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold text-white">Product</h2>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-white">Our Product</h2>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-12 items-start">
@@ -196,11 +196,15 @@
                         </p>
 
                         <div class="flex items-center gap-4">
-                            <button id="add-to-cart-btn" class="batik-button">
+                            <a id="preorder-btn"
+                               href="https://docs.google.com/forms/d/101E1mXpbl6yFvRMpNyB50omoyFMbvscKKxZk_dZmkrQ/edit"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="batik-button">
                                 <span class="batik-button-ornament"></span>
-                                Add to cart
-                            </button>
-                            <span class="text-sm text-white/80">Cart feature coming soon</span>
+                                Pre Order Now
+                            </a>
+                            <span class="text-sm text-white/80">Opens pre-order form in a new tab</span>
                         </div>
                     </div>
                 </div>
@@ -256,23 +260,8 @@
                     </div>
                 </div>
 
-                <!-- Add spacing here -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <div class="batik-chart-container">
-                        <h3 class="text-2xl font-display font-bold text-center mb-4 text-navy">Business Sustainability</h3>
-                        <p class="text-center text-gray-600 mb-8">Our financial model ensures viability, with over 40% profit margin reinvested into growth and artisan support.</p>
-                        <div class="chart-container">
-                            <canvas id="costChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="batik-chart-container">
-                        <h3 class="text-2xl font-display font-bold text-center mb-4 text-navy">Revenue Streams</h3>
-                        <p class="text-center text-gray-600 mb-8">We diversify our income through direct sales, partnerships, and creative product extensions.</p>
-                        <div class="chart-container">
-                            <canvas id="revenueChart"></canvas>
-                        </div>
-                    </div>
-                </div>
+                <!-- Removed: Business Sustainability and Revenue Streams charts -->
+
             </div>
         </section>
 
@@ -286,6 +275,30 @@
                     <p class="text-lg text-gray-700 leading-relaxed">
                         We didn't just guess. We went to the courts and spoke with over 10 players. Their feedback was overwhelmingly positive, validating our design, our mission, and a price point of RM89-RM109. This is a product people want.
                     </p>
+                    <!-- Media from the courts: Image and Video -->
+                    <div class="mt-12 grid md:grid-cols-2 gap-8 items-start">
+                        <figure class="batik-card overflow-hidden">
+                            <div class="batik-card-ornament"></div>
+                            <img
+                                src="images/feedback/feedback1.jpg"
+                                alt="Player feedback — photo from the courts"
+                                class="w-full h-auto"
+                                loading="lazy"
+                            />
+                        </figure>
+                        <figure class="batik-card overflow-hidden">
+                            <div class="batik-card-ornament"></div>
+                            <video
+                                class="w-full h-auto"
+                                controls
+                                preload="metadata"
+                                playsinline
+                            >
+                                <source src="images/feedback/feedbackvideo1.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </figure>
+                    </div>
                 </div>
                 
                 <div class="mt-16">
@@ -372,7 +385,20 @@
                     <h2 class="text-4xl md:text-5xl font-display font-bold text-navy mb-4">Meet the Team</h2>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">The passionate individuals behind Reweave's mission to transform waste into wonder.</p>
                 </div>
-                
+
+                <!-- Group Photo -->
+                <div class="max-w-5xl mx-auto mb-12">
+                    <figure class="batik-card overflow-hidden">
+                        <div class="batik-card-ornament"></div>
+                        <img
+                            src="images/team/group.jpg"
+                            alt="Reweave team group photo"
+                            class="w-full h-auto"
+                            loading="lazy"
+                        />
+                    </figure>
+                </div>
+
                 <!-- Simple Grid Layout -->
                 <div class="max-w-5xl mx-auto">
                     <!-- All 5 members in one responsive grid -->
