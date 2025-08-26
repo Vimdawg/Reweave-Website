@@ -1071,3 +1071,26 @@ input:focus {
 .team-container .grid:last-child {
     all: unset;
 }
+
+/* Social links visibility and sizing */
+.social-links .social-link {
+    color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-links .social-link svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+.social-links .social-link:hover {
+    color: var(--batik-gold);
+    transform: translateY(-2px);
+}
+
+/* Optional: subtle reduced opacity by default (uncomment if desired) */
+/* .social-links .social-link { opacity: 0.9; } */
