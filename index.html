@@ -40,12 +40,14 @@
     <div class="batik-bg fixed inset-0 opacity-5 pointer-events-none"></div>
     
     <header id="header" class="bg-white/95 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-lg border-b border-navy/10">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-6 flex items-center justify-between h-14 md:h-16 lg:h-20">
+            <!-- Logo -->
             <a href="#hero" class="flex items-center h-14 md:h-16 lg:h-20 w-44 md:w-56 lg:w-64 overflow-hidden shrink-0" aria-label="Home">
                 <img src="images/logo/reweave_logo.png" alt="Reweave logo" class="h-full w-full object-contain transform scale-150 origin-center" />
             </a>
+
             <!-- Desktop Navigation -->
-            <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wider">
+            <nav class="hidden lg:flex space-x-8 text-sm font-medium tracking-wider">
                 <a href="#story" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">The Story</a>
                 <a href="#product" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">Product</a>
                 <a href="#impact" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">Impact</a>
@@ -54,32 +56,27 @@
                 <a href="#team" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">Team</a>
                 <a href="#contact" class="nav-link text-navy hover:text-batik-gold transition-colors duration-300">Get Involved</a>
             </nav>
-            
-            <!-- Auth Section -->
-            <div class="flex items-center space-x-4">
-                <!-- Remove the entire cart button section -->
-                
-                <!-- Desktop Auth Buttons -->
-                <div class="hidden md:flex items-center space-x-3">
-                    <button id="login-btn" class="text-navy hover:text-batik-gold transition-colors duration-300 text-sm font-medium tracking-wider">
-                        Login
-                    </button>
-                    <button id="signup-btn" class="bg-navy hover:bg-navy-dark text-white px-4 py-2 rounded-lg text-sm font-medium tracking-wider transition-colors duration-300">
-                        Sign Up
-                    </button>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="md:hidden focus:outline-none text-navy">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
+
+            <!-- Desktop Auth/Buttons (reverted to md:flex) -->
+            <div class="hidden md:flex items-center space-x-3">
+                <button id="login-btn" class="text-navy hover:text-batik-gold transition-colors duration-300 text-sm font-medium tracking-wider">
+                    Login
+                </button>
+                <button id="signup-btn" class="bg-navy hover:bg-navy-dark text-white px-4 py-2 rounded-lg text-sm font-medium tracking-wider transition-colors duration-300">
+                    Sign Up
                 </button>
             </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden focus:outline-none text-navy" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-navy/10">
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-navy/10">
             <a href="#story" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">The Story</a>
             <a href="#product" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Product</a>
             <a href="#impact" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Impact</a>
@@ -87,7 +84,6 @@
             <a href="#journey" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Journey</a>
             <a href="#team" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Team</a>
             <a href="#contact" class="block py-3 px-6 text-sm hover:bg-batik-cream/30 text-navy">Get Involved</a>
-            <!-- Remove the mobile cart button -->
         </div>
     </header>
 
@@ -97,7 +93,8 @@
             <div class="batik-hero-pattern absolute inset-0 opacity-10"></div>
             <div class="bg-gradient-to-br from-navy/80 to-navy-dark/90 w-full h-full absolute top-0 left-0"></div>
             <div class="container mx-auto px-6 text-center relative z-10">
-                <div class="batik-ornament mb-8"></div>
+                <!-- Removed the gold ornament line below -->
+                <!-- <div class="batik-ornament mb-8"></div> -->
                 <h1 class="hero-title">
                     REWEAVE
                 </h1>

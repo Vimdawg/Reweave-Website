@@ -18,43 +18,77 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeIntersectionObserver();
     initializeGeminiAPI();
     initializeBatikAnimations();
+    initializeAccessibility();
 });
 
 // Navigation functionality
 function initializeNavigation() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            
-            // Animate menu button
-            mobileMenuButton.style.transform = mobileMenu.classList.contains('hidden') 
-                ? 'rotate(0deg)' 
-                : 'rotate(90deg)';
-        });
+    const mobileMenuId = 'mobile-menu';
+    const btnId = 'mobile-menu-button';
+
+    const getMobileMenu = () => document.getElementById(mobileMenuId);
+    const getMobileMenuButton = () => document.getElementById(btnId);
+
+    function setMenuState(isOpen) {
+        const menu = getMobileMenu();
+        const btn = getMobileMenuButton();
+        if (!menu || !btn) return;
+        if (isOpen) {
+            menu.classList.remove('hidden');
+            btn.style.transform = 'rotate(90deg)';
+            btn.setAttribute('aria-expanded', 'true');
+        } else {
+            menu.classList.add('hidden');
+            btn.style.transform = 'rotate(0deg)';
+            btn.setAttribute('aria-expanded', 'false');
+        }
     }
-    
-    // Smooth scroll for navigation links
+
+    function toggleMenu() {
+        const menu = getMobileMenu();
+        if (!menu) return;
+        const isOpen = menu.classList.contains('hidden') === false;
+        setMenuState(!isOpen);
+    }
+
+    // Event delegation for the hamburger button (survives DOM swaps)
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest(`#${btnId}`);
+        if (btn) {
+            e.preventDefault();
+            toggleMenu();
+        }
+    });
+
+    // Smooth scroll for navigation links and close menu on selection
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const href = this.getAttribute('href');
+            if (!href || href === '#') return;
+
+            const target = document.querySelector(href);
             if (target) {
+                e.preventDefault();
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
-                
+
                 // Close mobile menu if open
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenuButton.style.transform = 'rotate(0deg)';
+                const menu = getMobileMenu();
+                if (menu && !menu.classList.contains('hidden')) {
+                    setMenuState(false);
                 }
             }
         });
     });
+
+    // Hide mobile menu if resizing to lg+ breakpoint
+    window.addEventListener('resize', debounce(() => {
+        if (window.matchMedia('(min-width: 1024px)').matches) {
+            setMenuState(false);
+        }
+    }, 150));
 }
 
 // Impact calculator functionality
@@ -269,7 +303,6 @@ function initializeScrollAnimations() {
 function initializeIntersectionObserver() {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
-    const timelineItems = document.querySelectorAll('.batik-timeline-item');
     
     const observerOptions = {
         root: null,
@@ -442,8 +475,7 @@ function initializeBatikAnimations() {
     // Initialize parallax scrolling for hero section
     initializeParallaxScrolling();
     
-    // Add floating animation to ornaments
-    initializeFloatingOrnaments();
+    // Floating ornaments animation disabled
 }
 
 function createRippleEffect(e) {
@@ -593,9 +625,6 @@ function initializeAccessibility() {
     });
 }
 
-// Initialize accessibility on load
-initializeAccessibility();
-
 // Export functions for potential external use
 window.ReweaveApp = {
     updateImpactMetrics,
@@ -633,11 +662,9 @@ class AuthSystem {
     }
 
     bindEvents() {
-        // Modal triggers
+        // Modal triggers (desktop)
         document.getElementById('login-btn')?.addEventListener('click', () => this.openLoginModal());
         document.getElementById('signup-btn')?.addEventListener('click', () => this.openSignupModal());
-        document.getElementById('mobile-login-btn')?.addEventListener('click', () => this.openLoginModal());
-        document.getElementById('mobile-signup-btn')?.addEventListener('click', () => this.openSignupModal());
 
         // Modal close buttons
         document.getElementById('close-login-modal')?.addEventListener('click', () => this.closeModal('login-modal'));
@@ -667,17 +694,17 @@ class AuthSystem {
     }
 
     openLoginModal() {
-        document.getElementById('login-modal').classList.remove('hidden');
+        document.getElementById('login-modal')?.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
     }
 
     openSignupModal() {
-        document.getElementById('signup-modal').classList.remove('hidden');
+        document.getElementById('signup-modal')?.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
     }
 
     closeModal(modalId) {
-        document.getElementById(modalId).classList.add('hidden');
+        document.getElementById(modalId)?.classList.add('hidden');
         document.body.style.overflow = 'auto';
         this.clearFormErrors();
     }
@@ -712,11 +739,9 @@ class AuthSystem {
         const email = formData.get('email').trim();
         const password = formData.get('password');
         const confirmPassword = formData.get('confirmPassword');
-        const termsAccepted = document.getElementById('terms-checkbox').checked;
+        const termsAccepted = document.getElementById('terms-checkbox')?.checked;
 
         const validation = this.validateSignupForm(name, email, password, confirmPassword, termsAccepted);
-        
-        // Fix: Change validation.isValid to just validation
         if (!validation) {
             this.setLoadingState('signup-form', false);
             return;
@@ -767,8 +792,6 @@ class AuthSystem {
         const password = formData.get('password');
 
         const validation = this.validateLoginForm(email, password);
-        
-        // Fix: Change validation.isValid to just validation
         if (!validation) {
             this.setLoadingState('login-form', false);
             return;
@@ -791,7 +814,7 @@ class AuthSystem {
                 return;
             }
 
-            // In handleLogin method, after the email verification check:
+            // After login
             this.currentUser = data.user;
             this.showSuccessMessage('Welcome back! You have been successfully logged in.');
             this.closeAllModals();
@@ -828,7 +851,6 @@ class AuthSystem {
             return;
         }
         try {
-            if (!this.supabase) return;
             const { data: { user } } = await this.supabase.auth.getUser();
             this.currentUser = user;
             this.updateUI();
@@ -900,11 +922,14 @@ class AuthSystem {
 
     showError(elementId, message) {
         const errorElement = document.getElementById(elementId);
+        if (!errorElement) return;
         const inputElement = errorElement.previousElementSibling;
         
         errorElement.textContent = message;
         errorElement.classList.remove('hidden');
-        inputElement.classList.add('error');
+        if (inputElement) {
+            inputElement.classList.add('error');
+        }
     }
 
     clearFormErrors() {
@@ -922,7 +947,9 @@ class AuthSystem {
 
     setLoadingState(formId, isLoading) {
         const form = document.getElementById(formId);
+        if (!form) return;
         const submitButton = form.querySelector('button[type="submit"]');
+        if (!submitButton) return;
         
         if (isLoading) {
             form.classList.add('loading');
@@ -939,17 +966,15 @@ class AuthSystem {
         return new Promise(resolve => setTimeout(resolve, 1000));
     }
 
-    // Remove this method completely:
-    // loginUser(user) {
-    //     this.currentUser = user;
-    //     localStorage.setItem('reweave_current_user', JSON.stringify(user));
-    //     this.updateUI();
-    // }
-
     updateUI() {
+        // Only update the DESKTOP auth sub-container to avoid removing the mobile menu button
         const authSection = document.querySelector('.flex.items-center.space-x-4');
         if (!authSection) return;
-        
+
+        // This is the "hidden md:flex items-center space-x-3" div inside the authSection
+        const desktopAuth = authSection.querySelector('.hidden.md\\:flex.items-center.space-x-3');
+        if (!desktopAuth) return;
+
         if (this.currentUser) {
             // Compute a friendly display name
             const meta = this.currentUser.user_metadata || {};
@@ -957,41 +982,32 @@ class AuthSystem {
                 (meta.full_name || meta.name || meta.first_name || '').toString().trim();
 
             if (displayName) {
-                // Use only the first word as "first name"
                 displayName = displayName.split(/\s+/)[0];
             } else if (this.currentUser.email) {
-                // Fallback to email username if no name in metadata
                 displayName = this.currentUser.email.split('@')[0];
             } else {
-                // Final fallback
                 displayName = 'there';
             }
 
-            authSection.innerHTML = `
+            desktopAuth.innerHTML = `
                 <div class="hidden md:flex items-center space-x-3 user-menu">
                     <span class="text-navy text-sm">Welcome, ${displayName}</span>
                     <div class="relative">
                         <button id="user-menu-btn" class="bg-navy hover:bg-navy-dark text-white px-4 py-2 rounded-lg text-sm font-medium tracking-wider transition-colors duration-300">
                             Account
                         </button>
-                        <div id="user-dropdown" class="user-dropdown hidden">
-                            <a href="#" id="profile-link">Profile</a>
-                            <a href="#" id="settings-link">Settings</a>
-                            <a href="#" id="logout-link">Logout</a>
+                        <div id="user-dropdown" class="user-dropdown hidden absolute right-0 mt-2 bg-white border border-navy/10 rounded-lg shadow-lg z-50">
+                            <a href="#" id="profile-link" class="block px-4 py-2 text-sm text-navy hover:bg-batik-cream/30">Profile</a>
+                            <a href="#" id="settings-link" class="block px-4 py-2 text-sm text-navy hover:bg-batik-cream/30">Settings</a>
+                            <a href="#" id="logout-link" class="block px-4 py-2 text-sm text-navy hover:bg-batik-cream/30">Logout</a>
                         </div>
                     </div>
                 </div>
-                <button id="mobile-menu-button" class="md:hidden focus:outline-none text-navy">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
             `;
-            
             document.getElementById('user-menu-btn')?.addEventListener('click', this.toggleUserDropdown.bind(this));
-            document.getElementById('logout-link')?.addEventListener('click', () => this.logout());
+            document.getElementById('logout-link')?.addEventListener('click', (e) => { e.preventDefault(); this.logout(); });
         } else {
-            authSection.innerHTML = `
+            desktopAuth.innerHTML = `
                 <div class="hidden md:flex items-center space-x-3">
                     <button id="login-btn" class="text-navy hover:text-batik-gold transition-colors duration-300 text-sm font-medium tracking-wider">
                         Login
@@ -1000,13 +1016,7 @@ class AuthSystem {
                         Sign Up
                     </button>
                 </div>
-                <button id="mobile-menu-button" class="md:hidden focus:outline-none text-navy">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
             `;
-
             // Re-attach click handlers to the newly inserted buttons
             document.getElementById('login-btn')?.addEventListener('click', () => this.openLoginModal());
             document.getElementById('signup-btn')?.addEventListener('click', () => this.openSignupModal());
@@ -1015,7 +1025,7 @@ class AuthSystem {
 
     toggleUserDropdown() {
         const dropdown = document.getElementById('user-dropdown');
-        dropdown.classList.toggle('hidden');
+        dropdown?.classList.toggle('hidden');
     }
 
     showSuccessMessage(message) {
@@ -1028,7 +1038,7 @@ class AuthSystem {
             toast.remove();
         }, 3000);
     }
-} // Add this closing brace for the AuthSystem class
+}
 
 // Initialize authentication system
 const auth = new AuthSystem();
